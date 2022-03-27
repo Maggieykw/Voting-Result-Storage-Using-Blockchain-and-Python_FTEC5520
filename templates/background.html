@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+
+<title>BlockVote</title>
+{% if name %}
+<h4>Organizer: {{ name }}</h4>
+<br />
+<h5>Please input the voting information</h5>
+{% endif %}
+
+<body class="white">
+    <div class="row">
+        <form class="col s12" id="form" name="form" action="/" method="post">
+            <div class="row">
+                {% if not name %}
+                <div class="input-field col s12">
+                    <label for="name">Organizer Name</label>
+                    <input type="text" id="name" name="name" value="CUHK">
+                </div>
+                {% endif %}
+                <div class="input-field col s12">
+                    <label for="course">Department Code</label>
+                    <input type="text" id="course" name="course" value="FTEC">
+                </div>
+                <div class="input-field col s12">
+                    <label for="number">Total Number of Candidate</label>
+                    <input type="number" id="number" name="number" value="10">
+                </div>
+                <div class="input-field col s12">
+                    <select id="year" name="year">
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Bi-weekly">Bi-weekly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Quarterly">Quarterly</option>
+                        <option value="Half-yearly">Half-yearly</option>
+                        <option value="Yearly">Yearly</option>
+                    </select>
+                    <label for="year">Voting Period</label>
+                </div>
+                <div class="input-field col s12">
+                    <label for="date">Voting Date</label>
+                    <input class="datepicker" type="text" id="date" name="date" value="{{ date }}">
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Next
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <script type="text/javascript">
+    var form = document.getElementById("form") || null;
+    if(form) {
+        form.action = window.location.pathname;
+    }
+    var dpelem = document.querySelector('.datepicker');
+    var dpinstance = M.Datepicker.init(dpelem, {format:'yyyy-mm-dd'});
+    var fselem = document.querySelector('select');
+    var fsinstance = M.FormSelect.init(fselem, {});
+    </script>
+</body>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+
+<title>BlockVote</title>
+
+<body class="white">
+    <h4>Organizer: {{ name }}</h4>
+    <h5>Department: {{ course }}</h5>
+    <h5>Voting Period: {{ year }}</h5>
+    <h5>Voting Date: {{ date }}</h5>
+    <br />
+    <br />
+    <h5>Below is the voting result</h5>
+    <br />
+    <table>
+        <thead>
+            <tr>
+                <th>Candidate</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%  for i in range(1, number + 1) %}
+            <tr>
+                <td>Candidate-{{ "%02d" %i }}</td>
+                <td>{{ status[i - 1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br />
+
+    <button class="btn waves-effect waves-light" type="button" id="button" name="button">Go Back</button>
+    <script type="text/javascript">
+    function goBack() {
+        window.open("/", "_self");
+    }
+    var button = document.getElementById("button");
+    button.addEventListener("click", goBack);
+    </script>
+
+</body>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+
+<title>BlockVote</title>
+{% if name %}
+<h4>Organizer: {{ name }}</h4>
+<h5>Department: {{ course }}</h5>
+<h5>Voting Period: {{ year }}</h5>
+<h5>Voting Date: {{ date }}</h5>
+<br />
+<h5>Please input the voting result</h5>
+<br />
+{% else %}
+<h3>Hello, World!</h3>
+{% endif %}
+
+<body class="white">
+
+    <form action="/" method="post">
+
+        {%  for i in range(1, number + 1) %}
+        <p>
+            Candidate-{{ "%02d" %i }}: &emsp;
+            <label>
+                <input type="radio" name="roll_no{{ i }}" value="Elected">
+                <span>Elected &emsp; </span>
+            </label>
+            <label>
+                <input type="radio" name="roll_no{{ i }}" value="Unchosen" checked>
+                <span>Unchosen &emsp; </span>
+            </label>
+            <br />
+            <br />
+        </p>
+        {% endfor %}
+        <br />
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</body>
