@@ -7,3 +7,5 @@ In order to run this application,
 1. Download all the files in this folder
 2. Run "blockchain.ipynb"
 3. It will show URL and open it
+
+For demo, please refer to "Demo.mov"
