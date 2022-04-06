@@ -22,4 +22,4 @@ Application contains the following five functions:
 For demo, please refer to "Demo.mov"
 
 Reference: https://github.com/adeen-s/Blockendance
-Further updated and enhanced the code inside the reference
+(Further updated and enhanced the code inside the reference)
